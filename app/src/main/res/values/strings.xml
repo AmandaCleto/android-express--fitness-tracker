@@ -17,7 +17,16 @@
     <string name="imc_so_high_weight">Moderadamente obeso</string>
     <string name="imc_severely_high_weight">Severamente obeso</string>
     <string name="imc_extreme_weight">Extremamente obeso</string>
+
+    <!-- receiving dynamic props into your string -->
     <string name="imc_response">Imc: %1$.2f</string>
+    <!-- each prop is referenced it with %1$, %2$, %3$ (...)  -->
+    <!--
+        integer prop: d
+        double prop: .2f - where 2 means 2 floating points, such as: 32,00
+        string prop: s
+     -->
+
     <string name="save">Salvar</string>
     <string name="calc_saved">Registro salvo com sucesso</string>
     <string name="calc_removed">Registro removido com sucesso</string>

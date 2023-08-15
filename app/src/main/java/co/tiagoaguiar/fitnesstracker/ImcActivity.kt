@@ -1,6 +1,7 @@
 package co.tiagoaguiar.fitnesstracker
 
 import android.content.Context
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
 
 class ImcActivity : AppCompatActivity() {
@@ -34,7 +36,21 @@ class ImcActivity : AppCompatActivity() {
             val resultImc = calculateImc(weight, height)
             val imcResponseId = imcResponse(resultImc);
 
-            Toast.makeText(this, imcResponseId, Toast.LENGTH_SHORT).show()
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.imc_response, resultImc))
+                .setMessage(imcResponseId)
+                .setPositiveButton( android.R.string.ok) { dialog, which ->  // option 2: using lambda
+                    // when click Ok from dialog
+                }
+                .create()
+                .show()
+
+            // option 1
+//            dialog.setPositiveButton(android.R.string.ok, object : DialogInterface.OnClickListener {
+//                override fun onClick(dialog: DialogInterface?, which: Int) {
+//                    // when click Ok from dialog
+//                }
+//            })
         }
     }
 
@@ -44,18 +60,18 @@ class ImcActivity : AppCompatActivity() {
     * and that reference is an int
     * */
 
-    @StringRes //means to developer that this function shall return a R.string
+    @StringRes //means to desveloper that this function shall return a R.string
     private fun imcResponse(imc: Double): Int {
-       return when {
-           imc < 15.0 -> R.string.imc_severely_low_weight
-           imc < 16.0 -> R.string.imc_very_low_weight
-           imc < 18.5 -> R.string.imc_low_weight
-           imc < 25.0 -> R.string.normal
-           imc < 30.0 -> R.string.imc_high_weight
-           imc < 35.0 -> R.string.imc_so_high_weight
-           imc < 40.0 -> R.string.imc_severely_high_weight
-           else -> R.string.imc_extreme_weight
-       }
+        return when {
+            imc < 15.0 -> R.string.imc_severely_low_weight
+            imc < 16.0 -> R.string.imc_very_low_weight
+            imc < 18.5 -> R.string.imc_low_weight
+            imc < 25.0 -> R.string.normal
+            imc < 30.0 -> R.string.imc_high_weight
+            imc < 35.0 -> R.string.imc_so_high_weight
+            imc < 40.0 -> R.string.imc_severely_high_weight
+            else -> R.string.imc_extreme_weight
+        }
     }
 
     private fun validate(): Boolean {
