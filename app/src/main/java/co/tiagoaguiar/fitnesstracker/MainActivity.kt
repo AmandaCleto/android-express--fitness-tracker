@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         // 3.2
         rvMainView.adapter = adapter
-        rvMainView.layoutManager = LinearLayoutManager(this)
+        rvMainView.layoutManager = GridLayoutManager(this, 2)
 
 
 
