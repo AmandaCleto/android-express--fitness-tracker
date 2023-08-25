@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,6 +34,14 @@ class MainActivity : AppCompatActivity() {
                 drawableId = R.drawable.ic_baseline_wb_sunny_24,
                 textStringId = R.string.label_imc,
                 color = Color.GREEN
+            )
+        )
+        mainItems.add(
+            MainItem(
+                id = 2,
+                drawableId = R.drawable.baseline_brightness_3_24,
+                textStringId = R.string.label_imc,
+                color = Color.RED
             )
         )
 
@@ -93,8 +103,13 @@ class MainActivity : AppCompatActivity() {
     // is the item's class itself !
     private class MainViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: MainItem) {
-            val button : Button = itemView.findViewById(R.id.btn_item) //get the current button
-            button.setText(item.textStringId) // set to the android:text dynamically
+            val img : ImageView = itemView.findViewById(R.id.item_img_icon)
+            val name : TextView = itemView.findViewById(R.id.item_txt_name)
+            val container : LinearLayout = itemView as LinearLayout
+
+            img.setImageResource(item.drawableId)
+            name.setText(item.textStringId)
+            container.setBackgroundColor(item.color)
         }
     }
 }
