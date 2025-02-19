@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    namespace "co.tiagoaguiar.fitnesstracker"
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "co.tiagoaguiar.fitnesstracker"
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdkVersion 21 // ou a versão mínima que seu app suporta
+        targetSdkVersion 34 // ou a versão que seu app irá "mirar"
         versionCode 1
         versionName "1.0"
 
@@ -33,13 +33,6 @@ android {
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.google.android.material:material:1.12.0'
 }
