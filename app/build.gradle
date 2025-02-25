@@ -3,14 +3,16 @@ plugins {
     id 'kotlin-android'
 }
 
+apply plugin: 'kotlin-kapt'
+
 android {
     namespace "co.tiagoaguiar.fitnesstracker"
     compileSdkVersion 34
 
     defaultConfig {
         applicationId "co.tiagoaguiar.fitnesstracker"
-        minSdkVersion 21 // ou a versão mínima que seu app suporta
-        targetSdkVersion 34 // ou a versão que seu app irá "mirar"
+        minSdkVersion 28
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -35,4 +37,8 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.google.android.material:material:1.12.0'
+
+    def room_version = "2.7.0-alpha07"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }
