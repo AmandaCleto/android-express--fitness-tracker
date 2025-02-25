@@ -50,6 +50,12 @@ class ImcActivity : AppCompatActivity() {
                         val app = application as App
                         val dao = app.db.calcDao()
                         dao.insert(Calc(type = "IMC", res = resultImc))
+
+                        //call UI items inside this method so it will be executed after the lines above
+                        //if Toast was called after start(), it could have been showed before the insertion
+                        runOnUiThread {
+                            Toast.makeText(this@ImcActivity, R.string.calc_saved, Toast.LENGTH_LONG).show()
+                        }
                     }.start()
                 }
                 .create()
