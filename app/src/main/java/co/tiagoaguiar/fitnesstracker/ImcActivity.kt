@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
+import co.tiagoaguiar.fitnesstracker.model.Calc
 
 class ImcActivity : AppCompatActivity() {
     private lateinit var editWeight: EditText
@@ -43,6 +44,13 @@ class ImcActivity : AppCompatActivity() {
                 .setMessage(imcResponseId)
                 .setPositiveButton( android.R.string.ok) { dialog, which ->  // option 2: using lambda
                     // when click Ok from dialog
+                }
+                .setNegativeButton(R.string.save) { dialog, which ->
+                    Thread {
+                        val app = application as App
+                        val dao = app.db.calcDao()
+                        dao.insert(Calc(type = "IMC", res = resultImc))
+                    }.start()
                 }
                 .create()
                 .show()
