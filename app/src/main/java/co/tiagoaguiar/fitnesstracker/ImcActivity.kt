@@ -2,6 +2,7 @@ package co.tiagoaguiar.fitnesstracker
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.hardware.input.InputManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -54,7 +55,9 @@ class ImcActivity : AppCompatActivity() {
                         //call UI items inside this method so it will be executed after the lines above
                         //if Toast was called after start(), it could have been showed before the insertion
                         runOnUiThread {
-                            Toast.makeText(this@ImcActivity, R.string.calc_saved, Toast.LENGTH_LONG).show()
+                            val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
+                            intent.putExtra("type", "IMC")
+                            startActivity(intent)
                         }
                     }.start()
                 }
@@ -102,6 +105,5 @@ class ImcActivity : AppCompatActivity() {
 
     private fun calculateImc(weight: Int, height: Int): Double {
         return weight / ((height / 100.0) * (height / 100.0))
-
     }
 }

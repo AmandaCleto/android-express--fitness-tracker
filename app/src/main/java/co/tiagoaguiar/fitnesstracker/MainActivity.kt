@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     private inner class MainAdapter(
         private val mainItems: List<MainItem>,
         private val onItemClickListener: (Int) -> Unit
-    ) : RecyclerView.Adapter<MainViewHolder>() {
+    ) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val viewItem = LayoutInflater.from(parent.context).inflate(R.layout.main_item, parent, false)
@@ -71,22 +71,22 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount(): Int {
             return mainItems.size
         }
-    }
 
-    private class MainViewHolder(itemView: View, private val onItemClickListener: (Int) -> Unit) :
-        RecyclerView.ViewHolder(itemView) {
+        private inner class MainViewHolder(itemView: View, private val onItemClickListener: (Int) -> Unit) :
+            RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: MainItem) {
-            val img: ImageView = itemView.findViewById(R.id.item_img_icon)
-            val name: TextView = itemView.findViewById(R.id.item_txt_name)
-            val container: LinearLayout = itemView as LinearLayout
+            fun bind(item: MainItem) {
+                val img: ImageView = itemView.findViewById(R.id.item_img_icon)
+                val name: TextView = itemView.findViewById(R.id.item_txt_name)
+                val container: LinearLayout = itemView as LinearLayout
 
-            img.setImageResource(item.drawableId)
-            name.setText(item.textStringId)
-            container.setBackgroundColor(item.color)
+                img.setImageResource(item.drawableId)
+                name.setText(item.textStringId)
+                container.setBackgroundColor(item.color)
 
-            container.setOnClickListener {
-                onItemClickListener.invoke(item.id)
+                container.setOnClickListener {
+                    onItemClickListener.invoke(item.id)
+                }
             }
         }
     }

@@ -36,4 +36,6 @@
         double prop: .2f - where 2 means 2 floating points, such as: 32,00
         string prop: s
      -->
+
+    <string name="list_response">Resultado: %1$.2f, Data: %2$s</string>
 </resources>
