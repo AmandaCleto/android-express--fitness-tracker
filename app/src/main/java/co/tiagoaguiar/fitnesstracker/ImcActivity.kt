@@ -93,6 +93,7 @@ class ImcActivity : AppCompatActivity() {
     //toda atividade tem essa funcao que da interatividade ao menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.menu_search) {
+            finish() //destroys the current activity
             openListCalcActivity()
         }
         return super.onOptionsItemSelected(item)
