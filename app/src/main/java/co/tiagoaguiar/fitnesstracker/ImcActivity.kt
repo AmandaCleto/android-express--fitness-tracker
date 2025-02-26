@@ -7,6 +7,8 @@ import android.hardware.input.InputManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -55,9 +57,7 @@ class ImcActivity : AppCompatActivity() {
                         //call UI items inside this method so it will be executed after the lines above
                         //if Toast was called after start(), it could have been showed before the insertion
                         runOnUiThread {
-                            val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
-                            intent.putExtra("type", "IMC")
-                            startActivity(intent)
+                            openListCalcActivity()
                         }
                     }.start()
                 }
@@ -74,6 +74,28 @@ class ImcActivity : AppCompatActivity() {
             val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
+    }
+
+    private fun openListCalcActivity () {
+        val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
+        intent.putExtra("type", "IMC")
+        startActivity(intent)
+    }
+
+    //toda atividade tem essa funcao que cria menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+
+        return true
+    }
+
+
+    //toda atividade tem essa funcao que da interatividade ao menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.menu_search) {
+            openListCalcActivity()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     /*

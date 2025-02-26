@@ -28,7 +28,9 @@ class ListCalcActivity : AppCompatActivity() {
         val adapter = ListCalcAdapter(result)
 
         rv = findViewById(R.id.rv_list)
+        //layout manager define define como os itens da lista serão organizados na tela. Ele controla o posicionamento dos elementos, a rolagem e a reciclagem de itens para otimizar o desempenho.
         rv.layoutManager = LinearLayoutManager(this)
+        //LinearLayoutManager, exibe os itens da lista em uma única coluna ou linha, dependendo da orientação.
         rv.adapter = adapter
 
 
