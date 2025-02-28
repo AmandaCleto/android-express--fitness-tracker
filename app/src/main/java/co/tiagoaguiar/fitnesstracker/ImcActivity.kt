@@ -85,7 +85,7 @@ class ImcActivity : AppCompatActivity() {
     //toda atividade tem essa funcao que cria menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-
+        Log.i("teste", "veio aqui")
         return true
     }
 

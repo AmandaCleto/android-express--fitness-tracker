@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             MainItem(
                 id = 2,
                 drawableId = R.drawable.baseline_brightness_3_24,
-                textStringId = R.string.label_imc,
+                textStringId = R.string.tmb,
                 color = Color.RED
             )
         )
@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
             when (id) {
                 1 -> {
                     val intent = Intent(this@MainActivity, ImcActivity::class.java)
+                    startActivity(intent)
+                }
+                2 -> {
+                    val intent = Intent(this@MainActivity, TbmActivity::class.java)
                     startActivity(intent)
                 }
             }
